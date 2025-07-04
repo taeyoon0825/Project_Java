@@ -21,8 +21,8 @@ public class WeatherAPIClient {
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst");
         urlBuilder.append("?").append(URLEncoder.encode("serviceKey", "UTF-8")).append("=").append(serviceKey);
         urlBuilder.append("&pageNo=1&numOfRows=1000&dataType=JSON");
-        urlBuilder.append("&base_date=").append(baseDate);
-        urlBuilder.append("&base_time=").append(baseTime);
+        urlBuilder.append("&base_date=").append("20250704");
+        urlBuilder.append("&base_time=").append("0900");
         urlBuilder.append("&nx=").append(nx).append("&ny=").append(ny);
 
         // 호출 방식 GET
@@ -34,6 +34,7 @@ public class WeatherAPIClient {
         BufferedReader rd = new BufferedReader(new InputStreamReader(
                 conn.getResponseCode() >= 200 && conn.getResponseCode() < 300 ?
                         conn.getInputStream() : conn.getErrorStream()));
+        
         // 본문 읽고 저장 
         StringBuilder sb = new StringBuilder();
         String line;
@@ -60,10 +61,9 @@ public class WeatherAPIClient {
                 t1h = Double.parseDouble(fcstValue);
             }
         }
-
         
         return new WeatherInfo(pop, t1h);
-    }
+    } // getWeatherInfo
 
     // 현재 시각을 가져와 기상청이 요구하는 정각시각 으로 계산 (getBaseTime() 함수)
     private static String getBaseTime() {
@@ -78,10 +78,11 @@ public class WeatherAPIClient {
     public static class WeatherInfo {
         public int rainProbability;
         public double temperature;
-
+        
         public WeatherInfo(int pop, double t1h) {
             this.rainProbability = pop;
             this.temperature = t1h;
         }
-    }
-} 
+    } 
+    
+} // class

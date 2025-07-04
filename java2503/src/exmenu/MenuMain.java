@@ -49,13 +49,24 @@ public class MenuMain {
         } else {
             Collections.shuffle(menuList);
             System.out.println("🍽 오늘의 추천 메뉴: " + menuList.get(0));
+            JsonRest.getFood();
         }
-    }
+    } // main
 
+    
+    
     // 복날 설정
     private static boolean isBoknal(LocalDate date) {
         return date.equals(LocalDate.of(2025, 7, 20)) ||
                date.equals(LocalDate.of(2025, 7, 30)) ||
                date.equals(LocalDate.of(2025, 8, 9));
-    }
-} 
+    } // isBoknal();
+    
+    
+    
+} // class
+
+
+
+
+
