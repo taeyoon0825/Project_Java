@@ -22,7 +22,7 @@ public class WeatherAPIClient {
         urlBuilder.append("?").append(URLEncoder.encode("serviceKey", "UTF-8")).append("=").append(serviceKey);
         urlBuilder.append("&pageNo=1&numOfRows=1000&dataType=JSON");
         urlBuilder.append("&base_date=").append("20250704");
-        urlBuilder.append("&base_time=").append("0900");
+        urlBuilder.append("&base_time=").append("1200");
         urlBuilder.append("&nx=").append(nx).append("&ny=").append(ny);
 
         // 호출 방식 GET
