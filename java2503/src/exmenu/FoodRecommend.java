@@ -46,13 +46,13 @@ public class FoodRecommend {
 			if (weather.rainProbability >= 70) { // 강수확률 70퍼센트 일때 제외
 				menuList.removeAll(rainExcluded_1);
 			}
-//				if (weather.temperature >= 32.0) { // 온도 32도 이상일때 제외
-//					menuList.removeAll(hotExcluded_1);
-//				}
+				if (weather.temperature >= 35.0) { // 온도 32도 이상일때 제외
+					menuList.removeAll(hotExcluded_1);
+				}
 
-			if (weather.temperature >= 20.0) { // 리스트 변경 확인용 if문 (Heewon-07.05)
-				menuList.removeAll(hotExcluded_1);
-			}
+//			if (weather.temperature >= 20.0) { // 리스트 변경 확인용 if문 (Heewon-07.05)
+//				menuList.removeAll(hotExcluded_1);
+//			}
 
 			if (menuList.isEmpty()) {
 				// null 로 만들기

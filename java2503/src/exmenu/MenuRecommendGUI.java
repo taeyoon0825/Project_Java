@@ -10,7 +10,7 @@ public class MenuRecommendGUI extends JFrame {
 	private JLabel menuNameLabel; // 메뉴명
 	private  JLabel[] recentMenuLabels = new JLabel[5];
 	private JButton recommendBtn = new JButton("추천 버튼");
-	
+	private JButton confirmBtn = new JButton("확정");
 	// 생성자 함수
 	public MenuRecommendGUI() {
 		setTitle("메뉴 추천 프로그램");
@@ -27,9 +27,13 @@ public class MenuRecommendGUI extends JFrame {
 		add(tabbedPane);
 	} // 생성자 함수
 	
-	// 외부에서 버튼을 접근하기 위한 getter
-	public JButton getRecommendButton() {
+	// 외부에서 추천 버튼을 접근하기 위한 getter
+	public JButton getRecommendBtn() {
 	    return recommendBtn;
+	}
+	// 외부에서 확정 버튼을 접근하기 위한 getter
+	public JButton getconfirmBtn() {
+		return confirmBtn;
 	}
 	// 외부에서 메뉴 Label 을 접근하기 위한 getter
 	public JLabel getmenuNameLabel() {
@@ -64,7 +68,6 @@ public class MenuRecommendGUI extends JFrame {
 		menuNameLabel.setMaximumSize(new Dimension(200, 100));
 		menuNameLabel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
 
-		JButton confirmBtn = new JButton("확정");
 		confirmBtn.setMaximumSize(new Dimension(200, 100));
 		confirmBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 
