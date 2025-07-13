@@ -33,4 +33,4 @@ public class Food {
 	public String toString() {
 		return "Food [id=" + id + ", name=" + name + "]";
 	}
-}
+}// class

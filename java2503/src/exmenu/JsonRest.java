@@ -51,6 +51,8 @@ public class JsonRest {
 			recentEatFood.clear();
 			recentEatFood.addAll(jsonFoodList.stream().map(Food::getName).collect(Collectors.toList()));
 
+			
+			
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
@@ -89,4 +91,27 @@ public class JsonRest {
 
 	} // delFood
 
+	// 최신메뉴 리스트 반환하는 메소드
+	public static List<String> getRecentMenus() {
+	    List<String> menus = new ArrayList<>();
+	    try {
+	        OkHttpClient client = new OkHttpClient();
+	        Request request = new Request.Builder().url("http://localhost:3000/food").build();
+	        Response response = client.newCall(request).execute(); // 동기 호출!
+	        String json = Objects.requireNonNull(response.body()).string();
+
+	        Gson gson = new Gson();
+	        List<Food> foodList = gson.fromJson(json, new TypeToken<List<Food>>() {}.getType());
+
+	        int size = foodList.size();
+	        for (int i = Math.max(0, size - 5); i < size; i++) {
+	            menus.add(foodList.get(i).getName());
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return menus;
+	}
+	
+	
 } // class

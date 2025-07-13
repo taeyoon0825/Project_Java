@@ -73,7 +73,6 @@ public class MenuMain {
 			if (JsonRest.jsonFoodList.size() >= 5) {
 				JsonRest.delFood(JsonRest.jsonFoodList.get(0).getId());
 			}
-
 		}
 	} // main
 

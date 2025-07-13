@@ -21,7 +21,7 @@ public class WeatherAPIClient {
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst");
         urlBuilder.append("?").append(URLEncoder.encode("serviceKey", "UTF-8")).append("=").append(serviceKey);
         urlBuilder.append("&pageNo=1&numOfRows=1000&dataType=JSON");
-        urlBuilder.append("&base_date=").append("20250704");
+        urlBuilder.append("&base_date=").append("20250711");
         urlBuilder.append("&base_time=").append("1200");
         urlBuilder.append("&nx=").append(nx).append("&ny=").append(ny);
 
