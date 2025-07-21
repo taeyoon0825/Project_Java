@@ -1,0 +1,32 @@
+package exmenu;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
+
+public class MenuMainFrame extends JFrame {
+
+    public MenuMainFrame() {
+        setTitle("메뉴 설명 페이지");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 600);
+        setLocationRelativeTo(null);
+
+        List<MenuItem> menuItems = MenuFetcher.fetchMenuItems();
+
+        MenuDetailPanel detailPanel = new MenuDetailPanel();
+        MenuListPanel listPanel = new MenuListPanel(menuItems, detailPanel::updateDetail);
+
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, listPanel, detailPanel);
+        splitPane.setDividerLocation(250);
+
+        add(splitPane);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            MenuMainFrame frame = new MenuMainFrame();
+            frame.setVisible(true);
+        });
+    }
+}
