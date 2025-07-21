@@ -1,0 +1,19 @@
+package exmenu;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MenuFetcher {
+
+    public static List<MenuItem> fetchMenuItems() {
+        List<MenuItem> items = new ArrayList<>();
+
+        items.add(new MenuItem("김치찌개", "7천~8천원", "C:\\pub2504\\eclipse_workspace\\pub2504\\src\\exmenu\\음식 이미지\\img_김치찌개.jpg"));
+        items.add(new MenuItem("된장찌개", "6천~7천원", "img/soybean.jpg"));
+        items.add(new MenuItem("제육볶음", "8천~9천원", "img/spicy_pork.jpg"));
+        items.add(new MenuItem("비빔밥", "7천~8천원", "img/bibimbap.jpg"));
+        items.add(new MenuItem("불고기", "9천~1만원", "img/bulgogi.jpg"));
+
+        return items;
+    }
+}
