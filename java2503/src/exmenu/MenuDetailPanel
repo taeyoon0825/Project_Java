@@ -1,0 +1,63 @@
+package exmenu;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class MenuDetailPanel extends JPanel {
+
+    private JLabel imageLabel;
+    private JLabel nameLabel;
+    private JLabel priceLabel;
+
+    public MenuDetailPanel() {
+        setLayout(new BorderLayout());
+        setBorder(BorderFactory.createTitledBorder("메뉴 상세"));
+
+        // 이미지 패널 (위쪽, 1/2 차지)
+        JPanel imagePanel = new JPanel(new BorderLayout());
+        imageLabel = new JLabel();
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        imagePanel.add(imageLabel, BorderLayout.CENTER);
+
+        // 크기 고정 위해 preferredSize 설정 (윈도우 크기 조절 시)
+        imagePanel.setPreferredSize(new Dimension(0, 300));  // 높이 300px 예시
+
+        // 텍스트 패널 (아래쪽, 1/2 차지)
+        JPanel textPanel = new JPanel();
+        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
+
+        nameLabel = new JLabel("메뉴 이름");
+        nameLabel.setFont(new Font("SansSerif", Font.BOLD, 24));
+        nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        priceLabel = new JLabel("가격대");
+        priceLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        priceLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        textPanel.add(Box.createVerticalGlue()); // 위쪽 여백
+        textPanel.add(nameLabel);
+        textPanel.add(Box.createRigidArea(new Dimension(0, 10))); // 간격
+        textPanel.add(priceLabel);
+        textPanel.add(Box.createVerticalGlue()); // 아래쪽 여백
+
+        // 메인 패널에 위아래 배치
+        add(imagePanel, BorderLayout.NORTH);
+        add(textPanel, BorderLayout.CENTER);
+    }
+
+    public void updateDetail(MenuItem item) {
+        if (item != null) {
+            nameLabel.setText(item.getName());
+            priceLabel.setText(item.getPriceRange());
+
+            ImageIcon icon = new ImageIcon(item.getImagePath());
+            Image img = icon.getImage();
+            Image resizedImg = img.getScaledInstance(this.getWidth(), 300, Image.SCALE_SMOOTH);
+            imageLabel.setIcon(new ImageIcon(resizedImg));
+        } else {
+            nameLabel.setText("메뉴 없음");
+            priceLabel.setText("");
+            imageLabel.setIcon(null);
+        }
+    }
+}
