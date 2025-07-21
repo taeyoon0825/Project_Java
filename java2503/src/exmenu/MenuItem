@@ -1,0 +1,25 @@
+package exmenu;
+
+public class MenuItem {
+    private String name;
+    private String priceRange;
+    private String imagePath;
+
+    public MenuItem(String name, String priceRange, String imagePath) {
+        this.name = name;
+        this.priceRange = priceRange;
+        this.imagePath = imagePath;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPriceRange() {
+        return priceRange;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+}
