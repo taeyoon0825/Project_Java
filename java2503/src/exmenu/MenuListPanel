@@ -1,0 +1,35 @@
+package exmenu;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
+
+public class MenuListPanel extends JPanel {
+
+    private JList<String> menuList;
+
+    public MenuListPanel(List<MenuItem> items, java.util.function.Consumer<MenuItem> onItemSelected) {
+        setLayout(new BorderLayout());
+
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        for (MenuItem item : items) {
+            listModel.addElement(item.getName());
+        }
+
+        menuList = new JList<>(listModel);
+        menuList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        JScrollPane scrollPane = new JScrollPane(menuList);
+        add(scrollPane, BorderLayout.CENTER);
+
+        menuList.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                int idx = menuList.getSelectedIndex();
+                if (idx != -1) {
+                    MenuItem selected = items.get(idx);
+                    onItemSelected.accept(selected);
+                }
+            }
+        });
+    }
+}
